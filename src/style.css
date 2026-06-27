@@ -1,0 +1,142 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #002f47;
+  --color-secondary: #f5f7f2;
+  --color-text: #3d5a6a;
+  --color-accent: #299b46;
+  --font-sans: "Onest", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply font-sans text-text antialiased;
+  }
+
+  ::selection {
+    @apply bg-accent text-white;
+  }
+}
+
+@layer components {
+  .container-custom {
+    @apply mx-auto max-w-[1300px] px-4;
+  }
+
+  .section-label {
+    @apply mb-3 inline-block text-sm font-semibold uppercase tracking-widest text-accent;
+  }
+
+  .section-title {
+    @apply text-3xl font-bold leading-tight text-primary md:text-4xl lg:text-[42px];
+  }
+
+  .section-title span {
+    @apply text-accent;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-full bg-accent px-7 py-3.5 text-sm font-semibold uppercase tracking-wide text-white transition hover:bg-primary;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center rounded-full border-2 border-primary bg-transparent px-7 py-3.5 text-sm font-semibold uppercase tracking-wide text-primary transition hover:bg-primary hover:text-white;
+  }
+
+  .btn-white {
+    @apply inline-flex items-center justify-center rounded-full bg-white px-7 py-3.5 text-sm font-semibold uppercase tracking-wide text-primary transition hover:bg-accent hover:text-white;
+  }
+
+  .read-more {
+    @apply inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-accent transition hover:text-primary;
+  }
+
+  .read-more::after {
+    content: "→";
+    @apply transition-transform;
+  }
+
+  .read-more:hover::after {
+    @apply translate-x-1;
+  }
+
+  .dark-section {
+    @apply bg-primary text-white;
+  }
+
+  .light-section {
+    @apply bg-secondary;
+  }
+
+  .service-card {
+    @apply overflow-hidden rounded-2xl bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg;
+  }
+
+  .project-card .project-overlay {
+    @apply absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-primary/90 via-primary/40 to-transparent p-6 opacity-0 transition-opacity duration-300;
+  }
+
+  .project-card:hover .project-overlay {
+    @apply opacity-100;
+  }
+
+  .pricing-card {
+    @apply relative overflow-hidden rounded-2xl border border-primary/10 bg-white p-8 transition hover:-translate-y-1 hover:shadow-xl;
+  }
+
+  .pricing-card.featured {
+    @apply border-accent bg-primary text-white;
+  }
+
+  .pricing-card.featured .pricing-price,
+  .pricing-card.featured h3,
+  .pricing-card.featured li {
+    @apply text-white;
+  }
+
+  .faq-item.open .faq-answer {
+    @apply grid-rows-[1fr] pt-4 opacity-100;
+  }
+
+  .faq-item.open .faq-icon {
+    @apply rotate-45 bg-accent text-white;
+  }
+
+  .hero-overlay {
+    background: linear-gradient(270deg, rgba(0, 47, 71, 0.18) 21.87%, rgba(0, 47, 71, 0.9) 100%);
+  }
+
+  .hero-image {
+    @apply relative z-[3] mx-auto w-full max-w-[70%] text-center md:max-w-full lg:-mb-[140px] lg:-translate-y-12;
+  }
+
+  .hero-image img {
+    @apply mx-auto block h-auto w-full max-w-[480px] lg:max-w-[600px];
+  }
+
+  .testimonial-dot.active {
+    @apply w-8 bg-accent;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 12s linear infinite;
+}
